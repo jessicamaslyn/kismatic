@@ -46,3 +46,6 @@
       msg: "Timed out waiting for all calico pods to be ready."
     run_once: true
     when: desiredPods.stdout|int != readyPods.stdout|int
+  - name: remove calico config job
+    command: kubectl delete job configure-calico -n kube-system
+    run_once: true
